@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API Data Viewer</title>
+</head>
+<body>
+  <h1>API Data</h1>
+  <pre id="output">Loading...</pre>
+  <script>
+    fetch('https://gim.kesug.com/admin/api/gim_api.php')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('output').textContent = 'Failed to fetch data: ' + err;
+      });
+  </script>
+</body>
+</html>
